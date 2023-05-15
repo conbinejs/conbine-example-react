@@ -1,20 +1,17 @@
 import React, { Component } from 'react';
-import ConboAppContext from './ConboAppContext';
+import ConbineAppContext from './ConbineAppContext';
 
-const context = new ConboAppContext();
+const context = new ConbineAppContext();
 
 export const AppContext = React.createContext();
 
-export class AppContextProvider extends Component 
-{
-	constructor(props)
-	{
+export class AppContextProvider extends Component {
+	constructor(props) {
 		super(props);
 		this.state = {};
 	}
 
-	render()
-	{
+	render() {
 		const { children } = this.props;
 
 		return (

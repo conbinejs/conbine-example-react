@@ -1,4 +1,4 @@
-import { Command } from 'conbo';
+import { Command } from 'conbine';
 
 /**
  * Open an alert in response to "saved" event

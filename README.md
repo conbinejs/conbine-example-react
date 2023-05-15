@@ -2,12 +2,8 @@ ConboJS-React example
 =====================
 
 Simple example application demonstrating how to integrate
-[ConboJS](https://www.npmjs.com/package/conbo) features into a React application,
+[Conbine](https://www.npmjs.com/package/conbine) features into a React application,
 including an event bus, property injection, commands and services.
-
-While the full version of ConboJS has been used in this instance, you could equally
-use the the [Conbine](https://www.npmjs.com/package/conbine) build, which has all
-of the view related classes removed.
 
 This example integrates with the React Context API, but if you'd prefer to take
 a simpler approach using a global context, take a look at the `global` branch.

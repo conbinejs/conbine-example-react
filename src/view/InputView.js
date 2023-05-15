@@ -1,5 +1,4 @@
 import React, { Component } from 'react';
-import { bindAll } from 'conbo';
 import { AppContext } from '../context';
 import NameEvent from '../events/NameEvent';
 
@@ -7,54 +6,43 @@ import NameEvent from '../events/NameEvent';
  * Input view
  * @author	Neil Rackett
  */
-export default class InputView extends Component
-{
+export default class InputView extends Component {
 	static contextType = AppContext;
 
-	transientName;
-
-	constructor(props, context)
-	{
+	constructor(props, context) {
 		super(props);
 
 		this.state = {};
 
-		// Ensures all of this classes methods run in the correct scope
-		bindAll(this);
-
 		context.addEventListener(NameEvent.NAME_LOADED, this.nameLoadedHandler);
 	}
 
-	nameLoadedHandler(event)
-	{
-		this.setState({name: event.data.name});
-	}
+	nameLoadedHandler = (event) => {
+		this.setState({
+			defaultName: event.data.name,
+			name: event.data.name
+		});
+	};
 
-	inputHandler(event)
-	{
+	inputHandler = (event) => {
 		let name = event.target.value;
-		this.transientName = name;
-		this.context.dispatchEvent(new NameEvent(NameEvent.NAME_CHANGE, {name}));
-	}
+		this.setState({ name });
+		this.context.dispatchEvent(new NameEvent(NameEvent.NAME_CHANGE, { name }));
+	};
 
-	resetHandler(event)
-	{
-		let { name } = this.state;
-		this.transientName = name;
-		this.context.dispatchEvent(new NameEvent(NameEvent.NAME_CHANGE, {name}));
-	}
+	resetHandler = (event) => {
+		const name = this.state.defaultName;
+		this.setState({ name });
+		this.context.dispatchEvent(new NameEvent(NameEvent.NAME_CHANGE, { name }));
+	};
 
-	save(event)
-	{
-		let name = this.transientName;
-		this.setState({name});
-		this.context.dispatchEvent(new NameEvent(NameEvent.NAME_SAVE, {name}));
+	save = (event) => {
+		const { name } = this.state;
+		this.context.dispatchEvent(new NameEvent(NameEvent.NAME_SAVE, { name }));
 		event.preventDefault();
-		return false;
-	}
+	};
 
-	render()
-	{
+	render = () => {
 		return (
 			<form className="App-intro">
 				My name is
@@ -63,5 +51,5 @@ export default class InputView extends Component
 				&nbsp;<button type="reset" onClick={this.resetHandler}>Reset</button>
 			</form>
 		);
-	}
+	};
 }

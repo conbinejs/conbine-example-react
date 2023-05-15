@@ -1,5 +1,5 @@
 /**
- * Simple ConboJS-React example
+ * Simple Conbine-React example
  * @author	Neil Rackett
  */
 
