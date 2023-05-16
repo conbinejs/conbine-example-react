@@ -1,4 +1,4 @@
-ConboJS-React example
+Conbine-React example
 =====================
 
 Simple example application demonstrating how to integrate
