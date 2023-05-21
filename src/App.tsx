@@ -4,17 +4,19 @@ import { AppContext } from './context';
 import logo from './logo.svg';
 import InputView from './view/InputView';
 import OutputView from './view/OutputView';
+import ConbineAppContext from './context/ConbineAppContext';
+import NameService from './service/NameService';
 
-export default class App extends Component {
+export default class App extends Component<any, any> {
 	static contextType = AppContext;
 
 	/**
 	 * Name service will be injected by Conbine (declared as undefined)
 	 * @type NameService
 	 */
-	nameService = undefined;
+	protected nameService!: NameService;
 
-	constructor(props, context) {
+	constructor(props: any, context: ConbineAppContext) {
 		super(props);
 
 		/**

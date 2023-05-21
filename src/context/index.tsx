@@ -3,10 +3,10 @@ import ConbineAppContext from './ConbineAppContext';
 
 const context = new ConbineAppContext();
 
-export const AppContext = React.createContext();
+export const AppContext = React.createContext(context);
 
-export class AppContextProvider extends Component {
-	constructor(props) {
+export class AppContextProvider extends Component<any, any> {
+	constructor(props: any) {
 		super(props);
 		this.state = {};
 	}

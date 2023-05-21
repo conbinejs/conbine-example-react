@@ -1,3 +1,4 @@
+import { Actor, Injectable } from 'conbine';
 import NameEvent from '../events/NameEvent';
 
 /**
@@ -7,10 +8,11 @@ import NameEvent from '../events/NameEvent';
  *
  * @author	Neil Rackett
  */
-export default class NameService {
+@Injectable
+export default class NameService extends Actor {
 
-	constructor(options) {
-		this.context = options.context;
+	constructor(options: any) {
+		super(options);
 
 		if (!localStorage.name) {
 			localStorage.name = 'Conbine';

@@ -16,7 +16,8 @@ export default class ConbineAppContext extends Context {
 	constructor() {
 		super();
 
-		this.mapSingleton('nameService', NameService, { context: this })
+		this
+			.mapSingleton('nameService', NameService)
 
 			.mapCommand(NameEvent.NAME_SAVE, NameSaveCommand)
 			.mapCommand(NameEvent.NAME_SAVED, NameSavedCommand)
