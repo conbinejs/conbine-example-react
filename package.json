@@ -1,6 +1,14 @@
 {
-  "name": "my-app",
-  "version": "0.1.0",
+  "name": "conbine-example-react",
+  "repository": "https://github.com/conbinejs/conbine-example-react.git",
+  "author": "Neil Rackett",
+  "version": "0.5.0",
+  "keywords": [
+    "conbine",
+    "react",
+    "mvc",
+    "mvcs"
+  ],
   "private": true,
   "dependencies": {
     "@testing-library/jest-dom": "^5.16.5",
