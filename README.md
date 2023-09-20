@@ -15,6 +15,15 @@ npm i
 npm start
 ```
 
+Using class components?
+-----------------------
+
+This repo includes examples for both class and functional component, so just
+switch to the branch that matches your preferred approach:
+
+* [class-components](https://github.com/conbinejs/conbine-example-react/tree/class-components) for class components example
+* [functional-components](https://github.com/conbinejs/conbine-example-react/tree/functional-components) for functional components example using hooks
+
 Make a donation
 ---------------
 
