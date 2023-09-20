@@ -1,46 +1,29 @@
-import React, { Component } from 'react';
+import { useContext } from 'react';
 import './App.css';
 import { AppContext } from './context';
 import logo from './logo.svg';
+import NameService from './service/NameService';
 import InputView from './view/InputView';
 import OutputView from './view/OutputView';
-import ConbineAppContext from './context/ConbineAppContext';
-import NameService from './service/NameService';
 
-export default class App extends Component<any, any> {
-	static contextType = AppContext;
+const App = (props: any) => {
 
-	/**
-	 * Name service will be injected by Conbine (declared as undefined)
-	 * @type NameService
-	 */
-	protected nameService!: NameService;
+	const context = useContext(AppContext);
+	const nameService: NameService = context.inject({}, 'nameService').nameService;
 
-	constructor(props: any, context: ConbineAppContext) {
-		super(props);
+	nameService.loadName();
 
-		/**
-		 * Reference to the application's Conbine context and property injector
-		 * @type conbine.Context
-		 */
-		context.inject(this);
+	return (
+		<div className="App">
+			<header className="App-header">
+				<img src={logo} className="App-logo" alt="logo" />
+				<h1 className="App-title">Welcome to Conbine example for React</h1>
+			</header>
+			<OutputView />
+			<InputView />
+		</div>
+	);
 
-		/**
-		 * Use the injected NameService instance to load the data we need
-		 */
-		this.nameService.loadName();
-	}
+};
 
-	render() {
-		return (
-			<div className="App">
-				<header className="App-header">
-					<img src={logo} className="App-logo" alt="logo" />
-					<h1 className="App-title">Welcome to Conbine example for React</h1>
-				</header>
-				<OutputView />
-				<InputView />
-			</div>
-		);
-	}
-}
+export default App;

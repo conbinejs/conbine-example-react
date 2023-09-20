@@ -1,4 +1,4 @@
-import { Component, ReactNode } from 'react';
+import { useContext, useState } from 'react';
 import { AppContext } from '../context';
 import NameEvent from '../events/NameEvent';
 
@@ -6,28 +6,22 @@ import NameEvent from '../events/NameEvent';
  * Output view
  * @author	Neil Rackett
  */
-export default class OutputView extends Component<any, any> {
-	static contextType = AppContext;
+const OutputView = (props: any) => {
 
-	public context!: React.ContextType<typeof AppContext>;
+	const context = useContext(AppContext);
+	const [name, setName] = useState('');
 
-	constructor(props: any) {
-		super(props);
-		this.state = {};
-	}
-
-	public override componentDidMount(): void {
-		this.context
-			.addEventListener(NameEvent.NAME_LOADED, this.nameChangeHandler)
-			.addEventListener(NameEvent.NAME_CHANGE, this.nameChangeHandler)
-			;
-	}
-
-	public override render(): ReactNode {
-		return <h1>Hello, {this.state.name || 'whoever you are'}!</h1>;
+	const nameChangeHandler = (event: any) => {
+		setName(event.data.name);
 	};
 
-	protected nameChangeHandler = (event: any) => {
-		this.setState({ name: event.data.name });
-	};
-}
+	context
+		.addEventListener(NameEvent.NAME_LOADED, nameChangeHandler)
+		.addEventListener(NameEvent.NAME_CHANGE, nameChangeHandler)
+		;
+
+	return <h1>Hello, {name || 'whoever you are'}!</h1>;
+
+};
+
+export default OutputView;
